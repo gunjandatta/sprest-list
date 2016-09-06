@@ -4,7 +4,37 @@
 $(function() {
     // Render the list
     renderList();
+
+    // Attach the button to their click events
+    document.querySelector("#btnSaveForm").addEventListener("click", btnSaveForm_Click);
 });
+
+// Saves the item form
+function btnSaveForm_Click() {
+    var itemData = {};
+
+    // Parse the form labels
+    var labels = document.querySelectorAll("#itemForm .modal-body label");
+    for(var i=0; i<labels.length; i++) {
+        var objId = labels[i].getAttribute("for");
+        var value = null;
+
+        // Ensure the field name exists
+        var fieldName = objId ? objId.replace("item_", "") : null;
+        if(fieldName) {
+            var objValue = document.querySelector("#" + objId);
+
+            // Set the field value
+            itemData[fieldName] = objValue ? objValue.value : null;
+        }
+    }
+
+    // Add the item to the list
+    (new $REST.List_Async("SPREST List Demo", false)).addItem(itemData);
+
+    // Close the form
+    $("#itemForm").modal("hide");
+}
 
 // Method to get the list data
 function getListData() {
@@ -30,12 +60,33 @@ function getListData() {
                         BaseTemplate: 100,
                         Title: "SPRESTListDemo"
                     }).done(function(list) {
+                        var fields = [
+                            /* Core Fields */
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0112}" Name="ParentID" StaticName="ParentID" DisplayName="Parent ID" Type="Integer" JSLink="~site/Scripts/bravo.jslink.fields.js" />',
+
+                            /* Main Fields */
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0212}" Name="DemoChoice" StaticName="DemoChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>1</CHOICE><CHOICE>2</CHOICE><CHOICE>3</CHOICE></CHOICES></Field>',
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F1212}" Name="DemoNote" StaticName="DemoNote" DisplayName="Note" Type="Note" />',
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F3212}" Name="DemoUser" StaticName="DemoUser" DisplayName="User" Type="User" />',
+
+                            /* Child Fields */
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F0212}" Name="ChildChoice" StaticName="ChildChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>A</CHOICE><CHOICE>B</CHOICE><CHOICE>C</CHOICE></CHOICES></Field>',
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F1212}" Name="ChildNote" StaticName="ChildNote" DisplayName="Note" Type="Note" />',
+                            '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F2212}" Name="ChildText" StaticName="ChildText" DisplayName="Text" Type="Text" />',
+                        ];
+
                         // Update the title
                         list.asyncFl = false;
                         list.update({ Title: "SPREST List Demo"})
 
+                        // Parse the fields to add
+                        for(var i=0; i<fields.length; i++) {
+                            // Add the fields
+                            list.addFieldAsXml(fields[i]);
+                        }
+
                         // Display the notification
-                        SP.UI.Notify.addNotification("List created successfully.");
+                        SP.UI.Notify.addNotification("List created successfully. Refresh the page.");
                     });
                 }, "core.js");
             }
@@ -48,13 +99,46 @@ function getListData() {
     });
 
     // Return the promise
-    return promise();
+    return promise;
 }
 
 // Method to render the list
 function renderList() {
+    // Clear the table
+    var rows = document.querySelector("#tblMain > tbody")
+    rows.innerHTML = "";
+
     // Get the list data
     getListData().done(function(items) {
-        // Display the data
+        // Parse the items
+        for(var i=0; i<items.results.length; i++) {
+            // Render the row
+            renderRow(rows, items.results[i]);
+        }
     });
+}
+
+// Method to render a row
+function renderRow(rows, item) {
+    // Define the row template
+    var row =
+`
+<tr>
+    <td style="width:150px">{{ID}}</td>
+    <td>{{Title}}</td>
+    <td>{{DemoChoice}}</td>
+    <td>{{DemoNote}}</td>
+</tr>
+`;
+
+    // Define the item fields
+    var fields = ["ID", "DemoChoice", "DemoNote", "DemoUser", "Title"];
+
+    // Parse the fields
+    for(var i=0; i<fields.length; i++) {
+        row = row.replace("{{" + fields[i] + "}}", item[fields[i]]);
+    }
+
+    // Append the row
+    rows.innerHTML += row;
 }

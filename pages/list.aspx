@@ -31,14 +31,52 @@
             <div class="table-responsive">
                 <table id="tblMain" class="table table-striped">
                     <thead>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Created</th>
-                        <th>Modified</th>
+                        <tr>
+                            <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itemForm">New Item</button></th>
+                            <th>Title</th>
+                            <th>Choice</th>
+                            <th>Note</th>
+                        </tr>
                     </thead>
                     <tbody>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div id="itemForm" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="pull-right" aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">New Item</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="item_Title">Title: </label>
+                        <input type="text" class="form-control" id="item_Title" placeholder="Title"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_DemoChoice">Choice: </label>
+                        <select class="form-control" id="item_DemoChoice">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_DemoUser">User: </label>
+                        <input type="email" class="form-control" id="item_DemoUser_" placeholder="User"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_DemoNote">Note: </label>
+                        <textarea class="form-control" id="item_DemoNote" rows="3"" placeholder="Note"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveForm">Save</button>
+                </div>
             </div>
         </div>
     </div>
