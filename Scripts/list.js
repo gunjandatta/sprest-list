@@ -6,6 +6,46 @@ var GD = (function() {
     var _items = [];
     var _rows = null;
 
+    // Method to create the list
+    var createList = function() {
+        // Wait for the the SP script to be loaded
+        ExecuteOrDelayUntilScriptLoaded(function() {
+            // Create the list
+            (new $REST.Web_Async(false)).addList({
+                BaseTemplate: 100,
+                Title: "SPRESTListDemo"
+            }).done(function(list) {
+                var fields = [
+                    /* Core Fields */
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0112}" Name="ParentID" StaticName="ParentID" DisplayName="Parent ID" Type="Integer" JSLink="~site/Scripts/bravo.jslink.fields.js" />',
+
+                    /* Main Fields */
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0212}" Name="DemoChoice" StaticName="DemoChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>1</CHOICE><CHOICE>2</CHOICE><CHOICE>3</CHOICE></CHOICES></Field>',
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F1212}" Name="DemoNote" StaticName="DemoNote" DisplayName="Note" Type="Note" />',
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F3212}" Name="DemoUser" StaticName="DemoUser" DisplayName="User" Type="User" />',
+
+                    /* Child Fields */
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F0212}" Name="ChildChoice" StaticName="ChildChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>A</CHOICE><CHOICE>B</CHOICE><CHOICE>C</CHOICE></CHOICES></Field>',
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F1212}" Name="ChildNote" StaticName="ChildNote" DisplayName="Note" Type="Note" />',
+                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F2212}" Name="ChildText" StaticName="ChildText" DisplayName="Text" Type="Text" />',
+                ];
+
+                // Update the title
+                list.asyncFl = false;
+                list.update({ Title: "SPREST List Demo"})
+
+                // Parse the fields to add
+                for(var i=0; i<fields.length; i++) {
+                    // Add the fields
+                    list.addFieldAsXml(fields[i]);
+                }
+
+                // Refresh the page
+                document.location.reload();
+            });
+        }, "core.js");
+    };
+
     // Method to show the form
     var formData = function() {
         var itemData = {};
@@ -62,45 +102,12 @@ var GD = (function() {
             else {
                 // Ensure the list exists
                 if(items.results == null) {
-                    // Wait for the the SP script to be loaded
-                    ExecuteOrDelayUntilScriptLoaded(function() {
-                        // Display the notification
-                        SP.UI.Notify.addNotification("List not found, creating the list...", true);
+                    // Hide the header information
+                    document.querySelector("#tblMain > thead").style.display = "none";
 
-                        // Create the list
-                        (new $REST.Web_Async(false)).addList({
-                            BaseTemplate: 100,
-                            Title: "SPRESTListDemo"
-                        }).done(function(list) {
-                            var fields = [
-                                /* Core Fields */
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0112}" Name="ParentID" StaticName="ParentID" DisplayName="Parent ID" Type="Integer" JSLink="~site/Scripts/bravo.jslink.fields.js" />',
-
-                                /* Main Fields */
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0212}" Name="DemoChoice" StaticName="DemoChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>1</CHOICE><CHOICE>2</CHOICE><CHOICE>3</CHOICE></CHOICES></Field>',
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F1212}" Name="DemoNote" StaticName="DemoNote" DisplayName="Note" Type="Note" />',
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F3212}" Name="DemoUser" StaticName="DemoUser" DisplayName="User" Type="User" />',
-
-                                /* Child Fields */
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F0212}" Name="ChildChoice" StaticName="ChildChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>A</CHOICE><CHOICE>B</CHOICE><CHOICE>C</CHOICE></CHOICES></Field>',
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F1212}" Name="ChildNote" StaticName="ChildNote" DisplayName="Note" Type="Note" />',
-                                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F2212}" Name="ChildText" StaticName="ChildText" DisplayName="Text" Type="Text" />',
-                            ];
-
-                            // Update the title
-                            list.asyncFl = false;
-                            list.update({ Title: "SPREST List Demo"})
-
-                            // Parse the fields to add
-                            for(var i=0; i<fields.length; i++) {
-                                // Add the fields
-                                list.addFieldAsXml(fields[i]);
-                            }
-
-                            // Display the notification
-                            SP.UI.Notify.addNotification("List created successfully. Refresh the page.");
-                        });
-                    }, "core.js");
+                    // Show a button to create the list
+                    document.querySelector("#tblMain > tbody").innerHTML =
+                        "<tr class='info'><td colspan='99'><button type='button' class='btn btn-info' onclick='GD.createList();'>Create the List</button></td></tr>";
                 }
                 else {
                     // Show the empty list message
@@ -112,12 +119,6 @@ var GD = (function() {
 
         // Return the promise
         return promise;
-    };
-
-    // Initialize the demo
-    var init = function() {
-        // Render the list
-        renderList();
     };
 
     // Method to render the list
@@ -173,6 +174,9 @@ var GD = (function() {
             // Replace the ID
             row = row.replace(/{{ID}}/g, item.ID);
 
+            // Clear the empty message if it exists
+            _rows.innerHTML = _items.length == 0 ? "" : _rows.innerHTML;
+
             // Append the row
             _rows.innerHTML += row;
         }
@@ -225,12 +229,13 @@ var GD = (function() {
 
     // Public Interface
     return {
+        createList: createList,
         editItem: formData,
-        init: init,
+        renderList: renderList,
         newItem: formData,
         saveItem: saveForm
     };
 })();
 
 // Initialize the demo
-$(GD.init);
+$(GD.renderList);

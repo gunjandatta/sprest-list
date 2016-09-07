@@ -80,7 +80,7 @@
         </div>
     </div>
     <!-- Scripts -->
-    <script type="text/javascript" src="../js/list.js"></script>
+    <script type="text/javascript" src="../Scripts/list.js"></script>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="PlaceHolderLeftNavBar" runat="server" />
 <asp:Content ContentPlaceHolderID="PlaceHolderPageTitleInTitleArea" runat="server" />
