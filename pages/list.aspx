@@ -27,7 +27,6 @@
             <h1 class="page-header">List Demo</h1>
             <div class="row placeholders">
             </div>
-            <h2 class="sub-header">List View</h2>
             <div class="table-responsive">
                 <table id="tblMain" class="table table-striped">
                     <thead>
