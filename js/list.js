@@ -6,9 +6,16 @@ var GD = (function() {
     var _items = [];
     var _rows = null;
 
-    // Saves the item form
-    var btnSaveForm_Click = function() {
+    // Method to show the form
+    var formData = function() {
         var itemData = {};
+        var getDataFl = typeof(arguments[0]) === "boolean" ? arguments[0] : false;
+        var item = typeof(arguments[0]) === "number" ? _items[arguments[0]] : null;
+
+        // Set the modal title if we are not getting data
+        if(!getDataFl) {
+            document.querySelector("#itemForm .modal-title").innerHTML = item ? item.ID + " - " + item.Title : "New Item";
+        }
 
         // Parse the form labels
         var labels = document.querySelectorAll("#itemForm .modal-body label");
@@ -21,21 +28,24 @@ var GD = (function() {
             if(fieldName) {
                 var objValue = document.querySelector("#" + objId);
 
-                // Set the field value
-                itemData[fieldName] = objValue ? objValue.value : null;
+                // See if we are getting the data
+                if(getDataFl) {
+                    // Set the field value
+                    itemData[fieldName] = objValue ? objValue.value : null;
+                }
+                // Ensure the object exists
+                else if(objValue) {
+                    // Set or clear the field value
+                    objValue.value = item ? item[fieldName] : "";
+                }
             }
         }
 
-        // Add the item to the list
-        (new $REST.List_Async("SPREST List Demo", false))
-        .addItem(itemData)
-        .done(function(item) {
-            // Render this item
-            renderRow(item);
-        });
+        // Show the form
+        $("#itemForm").modal("show");
 
-        // Close the form
-        $("#itemForm").modal("hide");
+        // Return the item data
+        return itemData;
     };
 
     // Method to get the list data
@@ -108,9 +118,6 @@ var GD = (function() {
     var init = function() {
         // Render the list
         renderList();
-
-        // Attach the button to their click events
-        document.querySelector("#btnSaveForm").addEventListener("click", btnSaveForm_Click);
     };
 
     // Method to render the list
@@ -130,36 +137,98 @@ var GD = (function() {
     };
 
     // Method to render a row
-    var renderRow = function(item) {
+    var renderRow = function(item, updateFl) {
         // Define the row template
-        var row =
+        var row = updateFl ? _rows.querySelector("#item_" + item.ID) :
 `
-<tr>
-    <td style="width:150px">{{ID}}</td>
-    <td>{{Title}}</td>
-    <td>{{DemoChoice}}</td>
-    <td>{{DemoNote}}</td>
+<tr id="item_{{ID}}">
+    <td style="width:150px"><button type="button" class="btn btn-primary" onclick="GD.editItem({{ID}});">Edit</button></td>
+    <td data-fieldname="Title">{{Title}}</td>
+    <td data-fieldname="DemoChoice">{{DemoChoice}}</td>
+    <td data-fieldname="DemoNote">{{DemoNote}}</td>
 </tr>
 `;
 
         // Define the item fields
-        var fields = ["ID", "DemoChoice", "DemoNote", "DemoUser", "Title"];
+        var fields = ["DemoChoice", "DemoNote", "DemoUser", "Title"];
 
         // Parse the fields
         for(var i=0; i<fields.length; i++) {
-            row = row.replace("{{" + fields[i] + "}}", item[fields[i]]);
+            // See if we are updating the row
+            if(updateFl) {
+                var col = row.querySelector("td[data-fieldname='" + fields[i] + "']");
+                if(col) {
+                    // Update the value
+                    col.innerHTML = item[fields[i]];
+                }
+            }
+            else {
+                // Replace the value in the template
+                row = row.replace("{{" + fields[i] + "}}", item[fields[i]]);
+            }
         }
 
-        // Append the row
-        _rows.innerHTML += row;
+        // See if this is a new row
+        if(!updateFl) {
+            // Replace the ID
+            row = row.replace(/{{ID}}/g, item.ID);
+
+            // Append the row
+            _rows.innerHTML += row;
+        }
 
         // Save a reference to this item
-        _items.push(item);
+        _items[item.ID] = item;
+    };
+
+    // Method to save the form.
+    var saveForm = function() {
+        var item = _items[document.querySelector("#itemForm .modal-title").innerHTML.split(" - ")[0]];
+
+        // See if we are updating an item
+        if(item) {
+            // Get the form data
+            var itemData = formData(true);
+
+            // Update the item
+            item.update(itemData)
+            // Execute after the update
+            .done(function() {
+                // Update the item
+                for(var key in itemData) {
+                    // Ensure this is a field
+                    if(item[key]) {
+                        // Update the value
+                        item[key] = itemData[key];
+                    }
+                }
+
+                // Render this item
+                renderRow(item, true);
+            });
+        }
+        else {
+            // Get the list
+            (new $REST.List_Async("SPREST List Demo", false))
+            // Add the item to the list
+            .addItem(formData(true))
+            // Execute after the update
+            .done(function(item) {
+                // Render this item
+                renderRow(item);
+            });
+        }
+
+        // Close the form
+        $("#itemForm").modal("hide");
     };
 
     // Public Interface
     return {
-        init: init
+        editItem: formData,
+        init: init,
+        newItem: formData,
+        saveItem: saveForm
     };
 })();
 

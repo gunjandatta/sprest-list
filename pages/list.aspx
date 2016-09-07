@@ -32,7 +32,7 @@
                 <table id="tblMain" class="table table-striped">
                     <thead>
                         <tr>
-                            <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#itemForm">New Item</button></th>
+                            <th><button type="button" class="btn btn-primary" onclick="GD.newItem();">New Item</button></th>
                             <th>Title</th>
                             <th>Choice</th>
                             <th>Note</th>
@@ -65,8 +65,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="item_DemoUser">User: </label>
-                        <input type="email" class="form-control" id="item_DemoUser_" placeholder="User"></input>
+                        <label for="item_DemoUserId">User: </label>
+                        <input type="email" class="form-control" id="item_DemoUserId_" placeholder="User"></input>
                     </div>
                     <div class="form-group">
                         <label for="item_DemoNote">Note: </label>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="btnSaveForm">Save</button>
+                    <button type="button" class="btn btn-primary" onclick="GD.saveItem();">Save</button>
                 </div>
             </div>
         </div>
