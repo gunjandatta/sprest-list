@@ -8,42 +8,39 @@ var GD = (function() {
 
     // Method to create the list
     var createList = function() {
-        // Wait for the the SP script to be loaded
-        ExecuteOrDelayUntilScriptLoaded(function() {
-            // Create the list
-            (new $REST.Web_Async(false)).addList({
-                BaseTemplate: 100,
-                Title: "SPRESTListDemo"
-            }).done(function(list) {
-                var fields = [
-                    /* Core Fields */
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0112}" Name="ParentID" StaticName="ParentID" DisplayName="Parent ID" Type="Integer" JSLink="~site/Scripts/bravo.jslink.fields.js" />',
+        // Create the list
+        (new $REST.Web_Async(false)).addList({
+            BaseTemplate: 100,
+            Title: "SPRESTListDemo"
+        }).done(function(list) {
+            var fields = [
+                /* Core Fields */
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0112}" Name="ParentID" StaticName="ParentID" DisplayName="Parent ID" Type="Integer" JSLink="~site/Scripts/bravo.jslink.fields.js" />',
 
-                    /* Main Fields */
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0212}" Name="DemoChoice" StaticName="DemoChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>1</CHOICE><CHOICE>2</CHOICE><CHOICE>3</CHOICE></CHOICES></Field>',
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F1212}" Name="DemoNote" StaticName="DemoNote" DisplayName="Note" Type="Note" />',
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F3212}" Name="DemoUser" StaticName="DemoUser" DisplayName="User" Type="User" />',
+                /* Main Fields */
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F0212}" Name="DemoChoice" StaticName="DemoChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>1</CHOICE><CHOICE>2</CHOICE><CHOICE>3</CHOICE></CHOICES></Field>',
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F1212}" Name="DemoNote" StaticName="DemoNote" DisplayName="Note" Type="Note" />',
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017205F3212}" Name="DemoUser" StaticName="DemoUser" DisplayName="User" Type="User" />',
 
-                    /* Child Fields */
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F0212}" Name="ChildChoice" StaticName="ChildChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>A</CHOICE><CHOICE>B</CHOICE><CHOICE>C</CHOICE></CHOICES></Field>',
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F1212}" Name="ChildNote" StaticName="ChildNote" DisplayName="Note" Type="Note" />',
-                    '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F2212}" Name="ChildText" StaticName="ChildText" DisplayName="Text" Type="Text" />',
-                ];
+                /* Child Fields */
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F0212}" Name="ChildChoice" StaticName="ChildChoice" DisplayName="Choice" Type="Choice"><CHOICES><CHOICE>A</CHOICE><CHOICE>B</CHOICE><CHOICE>C</CHOICE></CHOICES></Field>',
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F1212}" Name="ChildNote" StaticName="ChildNote" DisplayName="Note" Type="Note" />',
+                '<Field ID="{AA3AF8EA-2D8D-4345-8BD9-6017207F2212}" Name="ChildText" StaticName="ChildText" DisplayName="Text" Type="Text" />',
+            ];
 
-                // Update the title
-                list.asyncFl = false;
-                list.update({ Title: "SPREST List Demo"})
+            // Update the title
+            list.asyncFl = false;
+            list.update({ Title: "SPREST List Demo"})
 
-                // Parse the fields to add
-                for(var i=0; i<fields.length; i++) {
-                    // Add the fields
-                    list.addFieldAsXml(fields[i]);
-                }
+            // Parse the fields to add
+            for(var i=0; i<fields.length; i++) {
+                // Add the fields
+                list.addFieldAsXml(fields[i]);
+            }
 
-                // Refresh the page
-                document.location.reload();
-            });
-        }, "core.js");
+            // Refresh the page
+            document.location.reload();
+        });
     };
 
     // Method to show the form
