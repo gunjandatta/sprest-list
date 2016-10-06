@@ -10,7 +10,7 @@
     <!-- Scripts -->
     <script type="text/javascript" src="../Scripts/jquery.min.js"></script>
     <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../Scripts/sprest.js"></script>
+    <script type="text/javascript" src="../Scripts/sprest.min.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="../Content/bootstrap.min.css" />
