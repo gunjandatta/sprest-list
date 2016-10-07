@@ -66,7 +66,7 @@ module Demo {
         /**
          * Method to edit an item.
          */
-        public editItem() { this.formData(); }
+        public editItem(itemId) { this.formData(itemId); }
 
         /**
          * Method to create a new item.
@@ -103,9 +103,10 @@ module Demo {
         /**
          * Method to show the form
          */
-        private formData(getDataFl:boolean = false) {
+        private formData(option?:any) {
             let itemData = {};
-            let item = null;
+            let item = typeof(option) === "number" ? this._items[option] : null;
+            let getDataFl = typeof(option) === "boolean" ? option : false;
 
             // Set the modal title if we are not getting data
             if(!getDataFl) {
@@ -245,7 +246,7 @@ module Demo {
                     // Update the item
                     for(let key in itemData) {
                         // Ensure this is a field
-                        if(item[key]) {
+                        if(item.hasOwnProperty(key)) {
                             // Update the value
                             item[key] = itemData[key];
                         }

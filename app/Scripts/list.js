@@ -53,7 +53,7 @@ var Demo;
         /**
          * Method to edit an item.
          */
-        GD.prototype.editItem = function () { this.formData(); };
+        GD.prototype.editItem = function (itemId) { this.formData(itemId); };
         /**
          * Method to create a new item.
          */
@@ -86,10 +86,10 @@ var Demo;
         /**
          * Method to show the form
          */
-        GD.prototype.formData = function (getDataFl) {
-            if (getDataFl === void 0) { getDataFl = false; }
+        GD.prototype.formData = function (option) {
             var itemData = {};
-            var item = null;
+            var item = typeof (option) === "number" ? this._items[option] : null;
+            var getDataFl = typeof (option) === "boolean" ? option : false;
             // Set the modal title if we are not getting data
             if (!getDataFl) {
                 document.querySelector("#itemForm .modal-title").innerHTML = item ? item["Id"] + " - " + item["Title"] : "New Item";
@@ -204,7 +204,7 @@ var Demo;
                     // Update the item
                     for (var key in itemData_1) {
                         // Ensure this is a field
-                        if (item[key]) {
+                        if (item.hasOwnProperty(key)) {
                             // Update the value
                             item[key] = itemData_1[key];
                         }
