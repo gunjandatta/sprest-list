@@ -1,3 +1,7 @@
 .vscode
 node_modules
-typings
+GD.SPREST.List/.vs*
+GD.SPREST.List/bin
+GD.SPREST.List/obj
+GD.SPREST.List/pkg
+GD.SPREST.List/pkgobj
