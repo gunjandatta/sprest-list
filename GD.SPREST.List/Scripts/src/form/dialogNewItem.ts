@@ -49,7 +49,7 @@
             <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
             <select id="ddlType" class="ms-Dropdown-select">
                 <option>Highest</option>
-                <option>Hight</option>
+                <option>High</option>
                 <option>Medium</option>
                 <option>Low</option>
                 <option>Lowest</option>

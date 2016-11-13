@@ -9,5 +9,6 @@
     <ProjectItemFile Source="list.js.map" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="src\form\viewNotespanel.ts" Target="Scripts\src\form\" Type="ElementFile" />
     <ProjectItemFile Source="src\form\dialogNewItem.ts" Target="Scripts\src\form\" Type="ElementFile" />
+    <ProjectItemFile Source="src\form\editItemPanel.ts" Target="Scripts\src\form\" Type="ElementFile" />
   </Files>
 </ProjectItem>

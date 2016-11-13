@@ -9,11 +9,13 @@
 
         // Form Elements
         private static allItemsTable: GD.Table;
+        private static editItemPanel: GD.EditItemPanel;
         private static myItemsTable: GD.Table;
         private static newItemDialog: GD.NewItemDialog;
         private static notesPanel: GD.ViewNotesPanel;
 
-        // Panel & Dialog Show Methods
+        // Panel & Dialog Methods
+        static showEditItemPanel(itemId) { this.editItemPanel.show(this._items[itemId]); return false; }
         static showNewItemDialog() { this.newItemDialog.open(); return false; }
         static showNotesPanel(itemId) { this.notesPanel.show(this._items[itemId]); return false; }
 
@@ -40,12 +42,27 @@
                 .Items()
                 // Query for the item
                 .query(query)
-                // Execute the request, and add the item to the dashboard
-                .execute((item) => { this._items[item.Id] = item; this.addItemToTables(item); });
+                // Execute the request
+                .execute((item) => {
+                    // Save a reference to this item
+                    this._items[item.Id] = item;
+
+                    // Add the item to the tables
+                    this.addItemToTables(item);
+
+                    // Close the dialog
+                    window["SP"].UI.ModalDialog.commonModalDialogClose();
+                });
         }
 
-        // Method to create a new item
-        static createItem() { this.newItemDialog.save(); }
+        // Method to create an item
+        static createItem() {
+            // Show the waiting panel
+            window["SP"].UI.ModalDialog.showWaitScreenWithNoClose("Creating the Item");
+
+            // Create the item
+            this.newItemDialog.save();
+        }
 
         // Method to initialize the dashboard
         static init() {
@@ -65,12 +82,22 @@
 
             // Create the dashboard components
             this.allItemsTable = new GD.Table("allItemsPanel");
+            this.editItemPanel = new GD.EditItemPanel();
             this.myItemsTable = new GD.Table("myItemsPanel");
             this.newItemDialog = new GD.NewItemDialog();
             this.notesPanel = new GD.ViewNotesPanel();
 
             // Render the tables
             this.renderTables();
+        }
+
+        // Method to save the item
+        static saveItem(itemId) {
+            // Show the waiting panel
+            window["SP"].UI.ModalDialog.showWaitScreenWithNoClose("Updating the Item");
+
+            // Save the item
+            this.editItemPanel.save(this._items[itemId]);
         }
 
         /****************************************************

@@ -243,6 +243,7 @@
     <TypeScriptCompile Include="node_modules\gd-sprest\dist\sprest.d.ts" />
     <TypeScriptCompile Include="Scripts\src\dashboard.ts" />
     <TypeScriptCompile Include="Scripts\src\form\dialogNewItem.ts" />
+    <TypeScriptCompile Include="Scripts\src\form\editItemPanel.ts" />
     <TypeScriptCompile Include="Scripts\src\form\viewNotespanel.ts" />
     <TypeScriptCompile Include="Scripts\src\form\table.ts" />
   </ItemGroup>

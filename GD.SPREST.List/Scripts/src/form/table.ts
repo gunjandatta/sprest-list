@@ -50,7 +50,7 @@
         <th>Title</th>
         <th>Type</th>
         <th>Owner</th>
-        <th>Notes</th>
+        <th>Actions</th>
     </tr>
 </thead>
 <tbody></tbody>
@@ -66,8 +66,12 @@
     <td>{{Type}}</td>
     <td>{{Owner}}</td>
     <td>
+        <button class="ms-Button" onclick="return GD.Dashboard.showEditItemPanel({{ID}});">
+            <span class="ms-Button-label">Edit</span>
+        </button>
+        &nbsp;/&nbsp;
         <button class="ms-Button" onclick="return GD.Dashboard.showNotesPanel({{ID}});">
-            <span class="ms-Button-label">View</span>
+            <span class="ms-Button-label">View Notes</span>
         </button>
     </td>
 </tr>
