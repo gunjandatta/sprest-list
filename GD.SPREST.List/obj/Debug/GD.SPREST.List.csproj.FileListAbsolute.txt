@@ -1,3 +1,0 @@
-C:\projects\sprest-list\GD.SPREST.List\bin\Debug\GD.SPREST.List.pdb
-C:\projects\sprest-list\GD.SPREST.List\obj\Debug\GD.SPREST.List.dll
-C:\projects\sprest-list\GD.SPREST.List\obj\Debug\GD.SPREST.List.pdb

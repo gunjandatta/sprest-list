@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="b43d1e36-70d2-4d65-9424-7885a1bc664d" SharePointProductVersion="16.0">
-  <FeatureManifests>
-    <FeatureManifest Location="GD.SPREST.List_App.Feature\Feature.xml" />
-  </FeatureManifests>
-</Solution>
