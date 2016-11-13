@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Scripts">
+    <File Path="Scripts\Dashboard.js" Url="Scripts/Dashboard.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\src\dashboard.ts" Url="Scripts/src/dashboard.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\src\form\table.ts" Url="Scripts/src/form/table.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\list.js" Url="Scripts/list.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\list.js.map" Url="Scripts/list.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\src\form\viewNotespanel.ts" Url="Scripts/src/form/viewNotespanel.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\src\form\dialogNewItem.ts" Url="Scripts/src/form/dialogNewItem.ts" ReplaceContent="TRUE" />
+  </Module>
+</Elements>
