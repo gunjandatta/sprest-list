@@ -51,7 +51,7 @@
     <i class="ms-Panel-closeIcon ms-Icon ms-Icon--Cancel"></i>
 </button>
 <div class="ms-Panel-contentInner">
-    <p class="ms-Panel-headerText">Edit Item</p>
+    <p class="ms-Panel-headerText">View Item</p>
     <div id="lblType" class="ms-Label">
         <label class="ms-Label">Type:</label>
     </div>

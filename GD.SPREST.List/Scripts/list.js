@@ -10,6 +10,7 @@ var GD;
         Dashboard.showEditItemPanel = function (itemId) { this.editItemPanel.show(this._items[itemId]); return false; };
         Dashboard.showNewItemDialog = function () { this.newItemDialog.open(); return false; };
         Dashboard.showNotesPanel = function (itemId) { this.notesPanel.show(this._items[itemId]); return false; };
+        Dashboard.showViewItemPanel = function (itemId) { this.viewItemPanel.show(this._items[itemId]); return false; };
         /****************************************************
          * Public Interface
          ****************************************************/
@@ -68,6 +69,7 @@ var GD;
             this.myItemsTable = new GD.Table("myItemsPanel");
             this.newItemDialog = new GD.NewItemDialog();
             this.notesPanel = new GD.ViewNotesPanel();
+            this.viewItemPanel = new GD.ViewItemPanel();
             // Render the tables
             this.renderTables();
         };
@@ -215,7 +217,7 @@ var GD;
             // Set the item
             panel["item"] = item;
             // Set the template
-            panel.innerHTML = "\n<button class=\"ms-Panel-closeButton ms-PanelAction-close\">\n    <i class=\"ms-Panel-closeIcon ms-Icon ms-Icon--Cancel\"></i>\n</button>\n<div class=\"ms-Panel-contentInner\">\n    <p class=\"ms-Panel-headerText\">Edit Item</p>\n    <div id=\"lblType\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Type:</label>\n    </div>\n    <div id=\"lblTitle\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Title:</label>\n    <div id=\"lblOwner\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Owner:</label>\n    </div>\n    <div id=\"lblNotes\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Notes:</label>\n    </div>\n</div>\n";
+            panel.innerHTML = "\n<button class=\"ms-Panel-closeButton ms-PanelAction-close\">\n    <i class=\"ms-Panel-closeIcon ms-Icon ms-Icon--Cancel\"></i>\n</button>\n<div class=\"ms-Panel-contentInner\">\n    <p class=\"ms-Panel-headerText\">View Item</p>\n    <div id=\"lblType\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Type:</label>\n    </div>\n    <div id=\"lblTitle\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Title:</label>\n    <div id=\"lblOwner\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Owner:</label>\n    </div>\n    <div id=\"lblNotes\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Notes:</label>\n    </div>\n</div>\n";
             // Set the item values
             panel.querySelector("#lblNotes").innerHTML += item["GDNotes"];
             panel.querySelector("#lblOwner").innerHTML += item["GDOwner"].Title;
@@ -397,7 +399,7 @@ var GD;
         // Method to generate a table row
         Table.prototype.generateRow = function (item) {
             // Return the row template
-            return "\n<tr data-item-id=\"{{ID}}\">\n    <td>{{Title}}</td>\n    <td>{{Type}}</td>\n    <td>{{Owner}}</td>\n    <td>\n        <button class=\"ms-Button\" onclick=\"return GD.Dashboard.showEditItemPanel({{ID}});\">\n            <span class=\"ms-Button-label\">Edit</span>\n        </button>\n        &nbsp;/&nbsp;\n        <button class=\"ms-Button\" onclick=\"return GD.Dashboard.showNotesPanel({{ID}});\">\n            <span class=\"ms-Button-label\">View Notes</span>\n        </button>\n    </td>\n</tr>\n"
+            return "\n<tr data-item-id=\"{{ID}}\">\n    <td>{{Title}}</td>\n    <td>{{Type}}</td>\n    <td>{{Owner}}</td>\n    <td>\n        <button class=\"ms-Button\" onclick=\"return GD.Dashboard.showViewItemPanel({{ID}});\">\n            <span class=\"ms-Button-label\">View</span>\n        </button>\n        &nbsp;/&nbsp;\n        <button class=\"ms-Button\" onclick=\"return GD.Dashboard.showEditItemPanel({{ID}});\">\n            <span class=\"ms-Button-label\">Edit</span>\n        </button>\n        &nbsp;/&nbsp;\n        <button class=\"ms-Button\" onclick=\"return GD.Dashboard.showNotesPanel({{ID}});\">\n            <span class=\"ms-Button-label\">View Notes</span>\n        </button>\n    </td>\n</tr>\n"
                 .replace(/{{ID}}/g, item.Id)
                 .replace(/{{Owner}}/g, item["GDOwner"] ? item["GDOwner"].Title : null)
                 .replace(/{{Title}}/g, item["Title"])

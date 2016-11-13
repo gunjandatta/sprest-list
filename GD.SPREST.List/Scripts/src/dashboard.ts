@@ -13,11 +13,13 @@
         private static myItemsTable: GD.Table;
         private static newItemDialog: GD.NewItemDialog;
         private static notesPanel: GD.ViewNotesPanel;
+        private static viewItemPanel: GD.ViewItemPanel;
 
         // Panel & Dialog Methods
         static showEditItemPanel(itemId) { this.editItemPanel.show(this._items[itemId]); return false; }
         static showNewItemDialog() { this.newItemDialog.open(); return false; }
         static showNotesPanel(itemId) { this.notesPanel.show(this._items[itemId]); return false; }
+        static showViewItemPanel(itemId) { this.viewItemPanel.show(this._items[itemId]); return false; }
 
         /****************************************************
          * Public Interface
@@ -86,6 +88,7 @@
             this.myItemsTable = new GD.Table("myItemsPanel");
             this.newItemDialog = new GD.NewItemDialog();
             this.notesPanel = new GD.ViewNotesPanel();
+            this.viewItemPanel = new GD.ViewItemPanel();
 
             // Render the tables
             this.renderTables();

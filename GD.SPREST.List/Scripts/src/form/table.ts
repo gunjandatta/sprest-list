@@ -66,6 +66,10 @@
     <td>{{Type}}</td>
     <td>{{Owner}}</td>
     <td>
+        <button class="ms-Button" onclick="return GD.Dashboard.showViewItemPanel({{ID}});">
+            <span class="ms-Button-label">View</span>
+        </button>
+        &nbsp;/&nbsp;
         <button class="ms-Button" onclick="return GD.Dashboard.showEditItemPanel({{ID}});">
             <span class="ms-Button-label">Edit</span>
         </button>
