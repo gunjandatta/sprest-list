@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="b43d1e36-70d2-4d65-9424-7885a1bc664d" 
+        solutionId="b43d1e36-70d2-4d65-9424-7885a1bc664d" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="GD.SPREST.List"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="9534e8e5-d0c2-4104-ac74-a5b1d55aaf72" />
+  </features>
+</package>

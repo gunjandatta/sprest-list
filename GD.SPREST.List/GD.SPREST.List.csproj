@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF56A1C0-FD73-42EC-A5C4-4D48B5F51DFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GD.SPREST.List</RootNamespace>
+    <AssemblyName>GD.SPREST.List</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>16.1</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{4b3f7c8f-f3b2-4aaf-b273-64be21a03c05}</AppFeaturePartId>
+    <WspPartId>{e0e091e6-eba9-4f06-a67f-e957cd4f3c1c}</WspPartId>
+    <WorkflowPartId>{2711480f-f286-47e3-b5fd-e8f46eeedc28}</WorkflowPartId>
+    <CspkgPartId>{575c2737-a620-4f5c-be46-341d8e170929}</CspkgPartId>
+    <SqlPackagePartId>{2eae714f-5e12-4f5e-b880-48128520028a}</SqlPackagePartId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile>Scripts/list.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Lists\Demo\DemoInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{60205d5e-81d8-499d-9658-8fccdab366b2}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Demo\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7d7ae41f-3717-42ab-b05f-45607cc1b398}</SharePointProjectItemId>
+    </None>
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Breadcrumb\Breadcrumb.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Breadcrumb\Breadcrumb.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Breadcrumb\Breadcrumb.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Button\Button.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Button\Button.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Button\Button.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Callout\Callout.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Callout\Callout.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Callout\Callout.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CheckBox\CheckBox.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CheckBox\CheckBox.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CheckBox\CheckBox.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ChoiceFieldGroup\ChoiceFieldGroup.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ChoiceFieldGroup\ChoiceFieldGroup.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ChoiceFieldGroup\ChoiceFieldGroup.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CommandBar\CommandBar.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CommandBar\CommandBar.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CommandBar\CommandBar.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CommandButton\CommandButton.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CommandButton\CommandButton.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\CommandButton\CommandButton.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ContextualHost\ContextualHost.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ContextualHost\ContextualHost.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ContextualHost\ContextualHost.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ContextualMenu\ContextualMenu.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ContextualMenu\ContextualMenu.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ContextualMenu\ContextualMenu.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DatePicker\DatePicker.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DatePicker\DatePicker.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DatePicker\DatePicker.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DetailsList\DetailsList.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DetailsList\DetailsList.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DetailsList\DetailsList.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DialogHost\DialogHost.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DialogHost\DialogHost.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\DialogHost\DialogHost.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Dialog\Dialog.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Dialog\Dialog.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Dialog\Dialog.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Dropdown\Dropdown.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Dropdown\Dropdown.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Dropdown\Dropdown.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\FacePile\FacePile.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\FacePile\FacePile.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\FacePile\FacePile.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Label\Label.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Label\Label.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Label\Label.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Link\Link.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Link\Link.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Link\Link.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ListItem\ListItem.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ListItem\ListItem.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ListItem\ListItem.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\List\List.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\List\List.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\List\List.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\MessageBanner\MessageBanner.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\MessageBanner\MessageBanner.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\MessageBanner\MessageBanner.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\MessageBar\MessageBar.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\MessageBar\MessageBar.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\MessageBar\MessageBar.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\OrgChart\OrgChart.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\OrgChart\OrgChart.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\OrgChart\OrgChart.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Overlay\Overlay.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Overlay\Overlay.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Overlay\Overlay.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PanelHost\PanelHost.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PanelHost\PanelHost.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PanelHost\PanelHost.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Panel\Panel.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Panel\Panel.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Panel\Panel.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PeoplePicker\PeoplePicker.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PeoplePicker\PeoplePicker.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PeoplePicker\PeoplePicker.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PersonaCard\PersonaCard.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PersonaCard\PersonaCard.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\PersonaCard\PersonaCard.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Persona\Persona.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Persona\Persona.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Persona\Persona.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Pivot\Pivot.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Pivot\Pivot.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Pivot\Pivot.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ProgressIndicator\ProgressIndicator.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ProgressIndicator\ProgressIndicator.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\ProgressIndicator\ProgressIndicator.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\RadioButton\RadioButton.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\RadioButton\RadioButton.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\RadioButton\RadioButton.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\SearchBox\SearchBox.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\SearchBox\SearchBox.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\SearchBox\SearchBox.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Spinner\Spinner.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Spinner\Spinner.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Spinner\Spinner.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Table\Table.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Table\Table.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Table\Table.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\TextField\TextField.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\TextField\TextField.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\TextField\TextField.scss" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Toggle\Toggle.hbs" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Toggle\Toggle.json" />
+    <None Include="node_modules\office-ui-fabric-js\dist\components\Toggle\Toggle.scss" />
+    <None Include="package.json" />
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1822fd0d-70e1-474c-b6a5-7fb508b3c86e}</SharePointProjectItemId>
+    </None>
+    <Content Include="Elements.xml" />
+    <Content Include="Lists\Demo\DemoInstance\Elements.xml" />
+    <Content Include="Lists\Demo\Elements.xml" />
+    <Content Include="Lists\Demo\Schema.xml" />
+    <Content Include="node_modules\gd-sprest\dist\sprest.js" />
+    <Content Include="node_modules\gd-sprest\dist\sprest.min.js" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\css\fabric.components.css" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\css\fabric.components.min.css" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\css\fabric.components.rtl.css" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\css\fabric.components.rtl.min.css" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\css\fabric.min.css" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\css\fabric.rtl.min.css" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\js\fabric.js" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\js\fabric.min.js" />
+    <Content Include="node_modules\office-ui-fabric-js\dist\lib\PickaDate.js" />
+    <Content Include="Pages\Elements.xml" />
+    <Content Include="Pages\Dashboard.aspx" />
+    <None Include="Scripts\list.js.map" />
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{583b1ca5-d94e-4a15-9ae7-9fe24c4e657b}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2eae714f-5e12-4f5e-b880-48128520028a}</SharePointProjectItemId>
+    </None>
+    <Content Include="Scripts\Elements.xml" />
+    <Content Include="Scripts\Dashboard.js" />
+    <Content Include="Scripts\list.js" />
+    <Content Include="Scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{89d3d906-9ad1-42c1-85b2-2fcfb917d6d8}</SharePointProjectItemId>
+    </None>
+    <Content Include="Content\Elements.xml" />
+    <Content Include="Content\App.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\AppIcon.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
+    <Content Include="Images\Elements.xml" />
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1990bacf-db6b-4848-95e1-52216bb27e18}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{b43d1e36-70d2-4d65-9424-7885a1bc664d}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Features\App.Feature\App.Feature.feature">
+      <FeatureId>{9534e8e5-d0c2-4104-ac74-a5b1d55aaf72}</FeatureId>
+    </None>
+    <None Include="Features\App.Feature\App.Feature.Template.xml">
+      <DependentUpon>App.Feature.feature</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="node_modules\gd-sprest\dist\sprest.d.ts" />
+    <TypeScriptCompile Include="Scripts\src\dashboard.ts" />
+    <TypeScriptCompile Include="Scripts\src\form\dialogNewItem.ts" />
+    <TypeScriptCompile Include="Scripts\src\form\viewNotespanel.ts" />
+    <TypeScriptCompile Include="Scripts\src\form\table.ts" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+  <PropertyGroup>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+</Project>

@@ -1,4 +1,4 @@
-# Bootstrap Example
+# List Example
 This is a simple example of utilizing the gd-sprest library.
 
 ## Configuration
