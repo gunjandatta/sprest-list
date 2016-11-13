@@ -9,5 +9,6 @@
     <File Path="Scripts\src\form\viewNotespanel.ts" Url="Scripts/src/form/viewNotespanel.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\src\form\dialogNewItem.ts" Url="Scripts/src/form/dialogNewItem.ts" ReplaceContent="TRUE" />
     <File Path="Scripts\src\form\editItemPanel.ts" Url="Scripts/src/form/editItemPanel.ts" ReplaceContent="TRUE" />
+    <File Path="Scripts\src\form\viewItemPanel.ts" Url="Scripts/src/form/viewItemPanel.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

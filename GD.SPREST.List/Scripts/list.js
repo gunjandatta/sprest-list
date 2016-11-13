@@ -185,6 +185,70 @@ var GD;
     /***************************************************************
      * Edit Item Panel
      ***************************************************************/
+    var ViewItemPanel = (function () {
+        /***************************************************************
+         * Constructor
+         ***************************************************************/
+        function ViewItemPanel() {
+        }
+        /***************************************************************
+         * Public Interface
+         ***************************************************************/
+        // Method to close the panel
+        ViewItemPanel.prototype.close = function () {
+            // Query the close button and click it
+            this._activePanel ? this._activePanel.querySelector(".ms-Panel-closeButton")["click"]() : null;
+        };
+        // Method to show the panel
+        ViewItemPanel.prototype.show = function (item) {
+            // Clone the panel
+            this._activePanel = this.createPanel(item);
+            // Show the panel
+            new window["fabric"].Panel(this._activePanel);
+        };
+        // Method to create the panel
+        ViewItemPanel.prototype.createPanel = function (item) {
+            // Create the dialog
+            var panel = document.createElement("div");
+            // Set the class name
+            panel.className = "ms-Panel";
+            // Set the item
+            panel["item"] = item;
+            // Set the template
+            panel.innerHTML = "\n<button class=\"ms-Panel-closeButton ms-PanelAction-close\">\n    <i class=\"ms-Panel-closeIcon ms-Icon ms-Icon--Cancel\"></i>\n</button>\n<div class=\"ms-Panel-contentInner\">\n    <p class=\"ms-Panel-headerText\">Edit Item</p>\n    <div id=\"lblType\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Type:</label>\n    </div>\n    <div id=\"lblTitle\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Title:</label>\n    <div id=\"lblOwner\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Owner:</label>\n    </div>\n    <div id=\"lblNotes\" class=\"ms-Label\">\n        <label class=\"ms-Label\">Notes:</label>\n    </div>\n</div>\n";
+            // Set the item values
+            panel.querySelector("#lblNotes").innerHTML += item["GDNotes"];
+            panel.querySelector("#lblOwner").innerHTML += item["GDOwner"].Title;
+            panel.querySelector("#lblTitle").innerHTML += item["Title"];
+            panel.querySelector("#lblType").innerHTML += item["GDType"];
+            // Return the panel
+            return panel;
+        };
+        // Method to save the item
+        ViewItemPanel.prototype.saveItem = function (item) {
+            var _this = this;
+            item
+                .update({
+                GDNotes: this._activePanel.querySelector("#taNotes")["value"],
+                GDType: this._activePanel.querySelector("#ddlType")["value"],
+                Title: this._activePanel.querySelector("#tbTitle")["value"]
+            })
+                .execute(function () {
+                // Add the item to the dashboard
+                GD.Dashboard.addItem(item.Id);
+                // Close this panel
+                _this.close();
+            });
+        };
+        return ViewItemPanel;
+    }());
+    GD.ViewItemPanel = ViewItemPanel;
+})(GD || (GD = {}));
+var GD;
+(function (GD) {
+    /***************************************************************
+     * Edit Item Panel
+     ***************************************************************/
     var EditItemPanel = (function () {
         /***************************************************************
          * Constructor

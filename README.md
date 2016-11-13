@@ -1,17 +1,17 @@
 # List Example
-This is a simple example of utilizing the gd-sprest library.
+This is a simple example of utilizing the gd-sprest and office ui fabric js libraries.
 
-## Configuration
-![Create List](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/create-list.png)
+## Dashboard
+![Dashboard](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/dashboard.png)
 
-## Blank List View
-![Blank List](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/list-blank.png)
+## New Item Dialog
+![New Item Dialog](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/new-item-panel.png)
 
-## New Form
-![New Form](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/new-form.png)
+## Edit Item Panel
+![Edit Item Panel](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/edit-item-panel.png)
 
-## Edit Form
-![Edit Form](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/edit-form.png)
+## View Item Panel
+![View Item Panel](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/view-item-panel.png)
 
-## List View
-![List View](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/list-view.png)
+## View Notes Panel
+![View Notes Panel](https://raw.githubusercontent.com/gunjandatta/sprest-list/master/images/view-notes-panel.png)
