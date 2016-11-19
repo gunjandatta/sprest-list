@@ -6,6 +6,6 @@
     "office-ui-fabric-js": "*"
   },
   "dependencies": {
-    "gd-sprest": "^0.8.8"
+    "gd-sprest": "^0.9.1"
   }
 }
